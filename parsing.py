@@ -25,7 +25,7 @@ def parse(html):
 
     print(current_status)
     print('__________________________')
-    print(history_statuses)
+    print(history_status)
 
 
 def main():
