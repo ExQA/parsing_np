@@ -12,20 +12,12 @@ def get_html(url):
 
 def parse(html):
     soup = BeautifulSoup(html)
-    table = soup.find('table', class_="tracking-int")
+    table = soup.find('table', class_="tracking-int").find_all('tr')
 
-    # current_status
-    for row in table.find_all('tr')[1:]:
-        current_status = row.find_all('td')
-
-    # history_status
-    history_statuses = soup.find('tbody', class_="spoiler-content")
-    for status in history_statuses.find_all('tr')[1:]:
-        history_status = status.find_all('td')
-
-    print(current_status)
-    print('__________________________')
-    print(history_status)
+    for row in table:
+        columns = row.find_all('td')
+        if columns:
+            print(columns[0].text + ' --- ' + columns[1].text + ' --- ' + columns[2].text)
 
 
 def main():
